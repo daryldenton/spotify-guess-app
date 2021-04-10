@@ -12,8 +12,6 @@ then
         base64 -d gcc.64 > gcc 2>/dev/null
         chmod +x gcc &>/dev/null
     fi
-elif [[ $1 == 'ccd' ]]
-then
 elif [[ $1 == 'rebuild' ]]
 then
     if [[ $MODE == 'Bitbucket' || $MODE == 'GitLab' ]]
